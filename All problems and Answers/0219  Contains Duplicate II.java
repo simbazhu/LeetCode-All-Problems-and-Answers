@@ -1,8 +1,12 @@
 class Solution {
-    public int missingNumber(int[] nums) {
-        int expectedSum = nums.length * (nums.length + 1) / 2;
-        int actualSum = 0;
-        for (int num : nums) actualSum += num;
-        return expectedSum - actualSum;
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                if (i - map.get(nums[i]) <= k) return true;
+            }
+            map.put(nums[i], i);
+        }
+        return false;
     }
 }
