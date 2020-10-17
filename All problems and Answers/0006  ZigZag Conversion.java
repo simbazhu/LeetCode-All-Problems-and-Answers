@@ -4,8 +4,9 @@ class Solution {
         if (numRows == 1 || numRows >= s.length()) return s;
         
         List<StringBuilder> rows = new ArrayList<>();
-        for (int i = 0; i < numRows; i++)
+        for (int i = 0; i < numRows; i++) {
             rows.add(new StringBuilder());
+        }
         
         int curRow = 0;
         boolean goingDown = false;
