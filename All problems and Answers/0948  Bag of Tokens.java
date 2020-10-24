@@ -3,7 +3,7 @@ class Solution {
         Arrays.sort(tokens);
         int lo = 0, hi = tokens.length - 1;
         int points = 0, ans = 0;
-        while (lo <= hi && (P >= tokens[lo] || points > 0)) {
+        while (lo <= hi && (P >= tokens[lo])) {
             while (lo <= hi && P >= tokens[lo]) {
                 P -= tokens[lo++];
                 points++;
