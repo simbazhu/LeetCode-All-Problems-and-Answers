@@ -10,25 +10,31 @@
  */
 class Solution {
     public ListNode insertionSortList(ListNode head) {
-        ListNode dummy = new ListNode(0);
-        ListNode prev = dummy;
 
-        while (head != null) {
-            ListNode temp = head.next;
+        ListNode pseudoHead = new ListNode();
+        ListNode curr = head, prevNode, nextNode;
 
-            /* Before insert, the prev is at the last node of the sorted list.
-               Only the last node's value is larger than the current inserting node 
-               should we move the temp back to the head*/
-            if (prev.val >= head.val) prev = dummy;
+        while (curr != null) {
+            // At each iteration, we insert an element into the resulting list.
+            prevNode = pseudoHead;
+            nextNode = pseudoHead.next;
 
-            while (prev.next != null && prev.next.val < head.val) {
-                prev = prev.next;
+            // find the position to insert the current node
+            while (nextNode != null) {
+                if (curr.val < nextNode.val)
+                    break;
+                prevNode = nextNode;
+                nextNode = nextNode.next;
             }
+            ListNode nextIter = curr.next;
+            // insert the current node to the new list
+            curr.next = nextNode;
+            prevNode.next = curr;
 
-            head.next = prev.next;
-            prev.next = head;
-            head = temp;
+            // moving on to the next iteration
+            curr = nextIter;
         }
-        return dummy.next;
+
+        return pseudoHead.next;
     }
 }
