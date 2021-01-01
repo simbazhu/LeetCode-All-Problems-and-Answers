@@ -8,13 +8,13 @@ class Solution {
             char[] chars = line.toCharArray();
             if (!inBlock) newline = new StringBuilder();
             while (i < line.length()) {
-                if (!inBlock && i+1 < line.length() && chars[i] == '/' && chars[i+1] == '*') {
+                if (!inBlock && i + 1 < line.length() && chars[i] == '/' && chars[i + 1] == '*') {
                     inBlock = true;
                     i++;
-                } else if (inBlock && i+1 < line.length() && chars[i] == '*' && chars[i+1] == '/') {
+                } else if (inBlock && i + 1 < line.length() && chars[i] == '*' && chars[i + 1] == '/') {
                     inBlock = false;
                     i++;
-                } else if (!inBlock && i+1 < line.length() && chars[i] == '/' && chars[i+1] == '/') {
+                } else if (!inBlock && i + 1 < line.length() && chars[i] == '/' && chars[i + 1] == '/') {
                     break;
                 } else if (!inBlock) {
                     newline.append(chars[i]);
