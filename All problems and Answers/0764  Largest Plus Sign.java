@@ -10,13 +10,13 @@ class Solution {
         for (int r = 0; r < N; ++r) {
             count = 0;
             for (int c = 0; c < N; ++c) {
-                count = banned.contains(r*N + c) ? 0 : count + 1;
+                count = banned.contains(r * N + c) ? 0 : count + 1;
                 dp[r][c] = count;
             }
             
             count = 0;
             for (int c = N-1; c >= 0; --c) {
-                count = banned.contains(r*N + c) ? 0 : count + 1;
+                count = banned.contains(r * N + c) ? 0 : count + 1;
                 dp[r][c] = Math.min(dp[r][c], count);
             }
         }
@@ -24,13 +24,13 @@ class Solution {
         for (int c = 0; c < N; ++c) {
             count = 0;
             for (int r = 0; r < N; ++r) {
-                count = banned.contains(r*N + c) ? 0 : count + 1;
+                count = banned.contains(r * N + c) ? 0 : count + 1;
                 dp[r][c] = Math.min(dp[r][c], count);
             }
             
             count = 0;
-            for (int r = N-1; r >= 0; --r) {
-                count = banned.contains(r*N + c) ? 0 : count + 1;
+            for (int r = N - 1; r >= 0; --r) {
+                count = banned.contains(r * N + c) ? 0 : count + 1;
                 dp[r][c] = Math.min(dp[r][c], count);
                 ans = Math.max(ans, dp[r][c]);
             }
